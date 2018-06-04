@@ -1,0 +1,180 @@
+#mmm-options
+  %h1 MegaMegaMonitor Options and Tools
+
+  #mmm-options-editor
+    %ul#mmm-options-sections
+      %li{data: {section: 'icons'}}
+        .pointer
+        Icons
+      %li{data: {section: 'graphs'}, style: 'display: none;'}
+        .pointer
+        Graphs
+      %li{data: {section: 'lists'}}
+        .pointer
+        Lists
+      %li{data: {section: 'crypto'}}
+        .pointer
+        Crypto
+      %li{data: {section: 'performance'}}
+        .pointer
+        Performance
+      %li{data: {section: 'troubleshooting'}}
+        .pointer
+        Troubleshooting
+      %li{data: {section: 'debug'}, style: 'display: none;'}
+        .pointer
+        Debugging
+
+    .mmm-options-section{data: {section: 'icons'}}
+      %h2 Icon size
+      %p
+        %select#icon-size{data: {setting: 'icon-size'}}
+          %option{value: 'mmm-icons-large'} Large
+          %option{value: ''} Regular (default)
+          %option{value: 'mmm-icons-small'} Small
+          %option{value: 'mmm-icons-smaller'} Smaller
+        %a{href: '#', title: "This is an example of an icon at the size you have selected", class: "mmm-icon mmm-icon--1"}
+        %br
+        %small Some folks prefer to see icons at a different size.
+
+      %h2 Icon visibility
+      %p
+        If you'd rather not see particular icons, uncheck them here.
+      %ul#icon-suppression
+      %small
+        Note that unchecking only prevents
+        %em you
+        from seeing the icons; it doesn't prevent others from seeing them next to
+        %em your
+        name.
+
+    .mmm-options-section{data: {section: 'graphs'}}
+      %p
+        Some graph-related text.
+
+    .mmm-options-section{data: {section: 'lists'}}
+      #mmm-list-section
+        #mmm-list-section-operations
+          %h2 Recipe
+          %p
+            %textarea#mmm-list-code{spellcheck: 'false'}
+            %small Type your recipe here and click execute, or load a recipe from your recipe book.
+            %br
+            %button#mmm-list-execute Execute
+
+            %h2 Output
+            %p
+              %textarea#mmm-list-output{spellcheck: 'false'}
+              %br
+              %small
+                Use
+                %tt List.output.clear()
+                and
+                %tt List.output.log something
+                in your recipe to output here.
+
+        #mmm-list-section-options
+          %h2 Mode
+          %p
+            Current mode:
+            %span#mmm-list-mode
+              (unknown)
+            %a#mmm-list-mode-change{href: '#'} change
+          %small
+            Fast mode uses data preloaded and presorted by MegaMegaMonitor, where possible (can be out of date). Slow mode always uses data loaded directly from the Reddit API.
+
+          %h2 Recipe Book
+          %select#mmm-list-recipebook{size: 10}
+
+          %p
+            %button#save-recipe Save Recipe
+            %button#delete-recipe Delete Recipe
+
+          %h2 Writing Recipes
+          %p
+            Recipes are written in CoffeeScript, a dialect of Javascript. They have access to all of the data in your local copy
+            of MegaMegaMonitor, as well as some convenience methods that connect to the Reddit API on your behalf. Be very wary
+            of running recipes written by other people, as these could compromise your Reddit account.
+
+    .mmm-options-section{data: {section: 'crypto'}}
+      #mmm-static-crypto
+        %h2 Encrypt
+        %p
+          You can use this tool to write secret messages that can only be read by MegaMegaMonitor users who have access to particular
+          private subreddits.
+        %h3 Your secret message
+        %p
+          %textarea#mmm-static-crypto-secret-message
+          %br
+          %small
+            You can use Reddit Markdown formatting if you like: note that "/r/..." and "/u/..." will not be automatically converted into links.
+        %h3 Who can see it?
+        %p
+          %select#mmm-static-crypto-crypto-key
+          %br
+          %small Which users will have access to your secret message?
+        %h3 Public message (optional)
+        %p
+          %input#mmm-static-crypto-public-message{type: 'text'}
+          %br
+          %small
+            Optionally provide some text that will be visible by users who don't have MegaMegaMonitor or don't have access to the private
+            subreddit you chose. Some basic Reddit Markdown is supported (italic, bold, etc.). Note that some mobile users (as well as those
+            with a technical inclination) might still see that there
+            %em is
+            a message even if you leave this blank - but of course they still won't be able to decrypt the message unless they're in the chosen
+            group.
+        %p
+          %button#mmm-static-crypto-encrypt Encrypt
+        #mmm-static-crypto-result{style: 'display: none;'}
+          %h3 Result
+          %textarea#mmm-static-crypto-result-output
+          %br
+          %small
+            Copy-paste the content above into a self-post, comment, or wiki page anywhere on Reddit. You can write normal content on one or both
+            sides of it, which will be visible to everybody, if you like.
+
+    .mmm-options-section{data: {section: 'performance'}}
+      %h2 Page update frequency
+      %p
+        %select#update-page-frequency{data: {setting: 'update-page-frequency'}}
+          %option{value: '10'} Virtually realtime (0.01s)
+          %option{value: '100'} Often (0.1s)
+          %option{value: ''} Balanced [default] (0.5s)
+          %option{value: '1000'} Infrequent (1s)
+          %option{value: '2500'} Relaxed (2.5s)
+          %option{value: '5000'} Chilled (5s)
+          %option{value: '10000'} Laid-back [best performance] (10s)
+        %br
+        %small If MMM makes your browser slow, you can partially-mitigate this by making it do less-frequent checks. However, if the page changes (e.g. because you unfold child comments) it will take longer for these changes to be given icons/decrypted etc. Choose a balancing point that's best for the way you use Reddit.
+
+    .mmm-options-section{data: {section: 'troubleshooting'}}
+      %p
+        If you're having difficulty with MegaMegaMonitor, you might like to try the following
+        self-help steps:
+      %ol
+        %li
+          %a#mmm-troubleshooting-check-data{href: '#'} Get a data update
+          \- MegaMegaMonitor does this automatically a few times a day, but sometimes it can get stuck and needs a prod.
+        %li
+          %a#mmm-troubleshooting-check-plugin{href: '#'} Check for plugin updates
+          \- Your Userscript Manager (e.g. Greasemonkey, Tampermonkey) should do this for you, but it can be reassuring to double-check.
+        %li
+          %a{href: '/r/MegaMegaMonitor'} Ask for help
+          \- Pretty much everybody on /r/MegaMegaMonitor is super helpful and friendly, and they want to help. The best way for us to
+          help you is if you're very clear about your problem: rather than saying it "doesn't work", tell us exactly what you're trying
+          to do, step by step, what happens when you do, and how that differs from what you expected to happen. It might also help to
+          know what version of MegaMegaMonitor you're using, which Userscript Manager, and which web browser.
+        %li
+          %a{href: 'https://www.megamegamonitor.com/'} Reinstall MegaMegaMonitor
+          \- Uninstall it first using your Userscript Manager, then reinstall it. You shouldn't lose any settings.
+        %li
+          %a#mmm-troubleshooting-clear-data{href: '/r/MegaMegaMonitor'} Clear all offline data
+          \- MegaMegaMonitor will forget everything it knows (even the identity of you and others who use this computer), so this
+          should be your last resort.
+
+    .mmm-options-section{data: {section: 'debug'}}
+      %h2 Impersonation
+      %p
+        %input#impersonate{data: {setting: 'impersonate'}, placeholder: 'username'}
+        %input#impersonate{data: {setting: 'impersonate-accesskey'}, placeholder: 'accesskey'}

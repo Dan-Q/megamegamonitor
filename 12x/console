@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'colorize'
+puts <<-EOF
+#{"To establish Reddit connection -".colorize(:green)}
+  r=MegaMegaMonitor.connect(Account::find_by_username('avapoet'))
+
+#{"To list RedditCabal/GildedAlphabet members and their tooltips -".colorize(:green)}
+  MegaMegaMonitor.list_members 'RedditCabal'
+  #{"# see https://www.reddit.com/r/redditcabal/wiki/members".colorize(:red)}
+
+#{"To change RedditCabal numbering -".colorize(:green)}
+  MegaMegaMonitor.set_tooltip 'RedditCabal', 'Unidan', 'Number -6'
+
+#{"To list MegaLounge birthdays -".colorize(:green)}
+  #{"# update from https://www.reddit.com/r/MegaLounge/comments/31eaxf/rmegalounge_birthday_list/".colorize(:red)}
+
+#{"To list MegaLounge chain populations -".colorize(:green)}
+  puts Subreddit::where('chain_number IS NOT NULL').order('chain_number').collect{|s|sprintf('%25s %5i', (s.chain_number > 26 ? "Gilded x\#{s.chain_number+1}" : (s.override_display_name || s.display_name)), s.contributors.count)}.join("\\n")
+
+#{"To log SQL output -".colorize(:green)}
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
+
+EOF
+exec "irb -r ./megamegamonitor"

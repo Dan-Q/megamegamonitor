@@ -1,0 +1,2 @@
+module PluginHelper
+end

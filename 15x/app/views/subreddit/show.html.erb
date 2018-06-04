@@ -1,0 +1,55 @@
+<%= form_for @subreddit do |f| -%>
+  <h1><%= @subreddit.display_name -%></h1>
+  <p>
+    <%= number_with_delimiter @subreddit.contributors.count -%> contributors, as of <%= @subreddit.user_list_updated_at -%>.
+  </p>
+  <h2>Monitoring</h2>
+  <p>
+    <%= f.check_box :monitor_contributors -%>
+    <%= f.label 'monitor_contributors', 'Monitor contributors?' -%>
+  </p>
+  <p>
+    <%= f.check_box :monitor_gildings -%>
+    <%= f.label 'monitor_gildings', 'Monitor gildings?' -%>
+  </p>
+  <h2>Icons</h2>
+  <ul>
+    <li>
+      Default: <%= image_tag @subreddit.icon_default.url %> <%= image_tag @subreddit.encoded_icon_default -%>
+      <%= f.file_field(:icon_default) -%>
+    </li>
+    <li>
+      Current: <%= image_tag @subreddit.icon_current.url %> <%= image_tag @subreddit.encoded_icon_current -%>
+      <%= f.file_field(:icon_current) -%>
+    </li>
+    <li>
+      Higher: <%= image_tag @subreddit.icon_higher.url %> <%= image_tag @subreddit.encoded_icon_higher -%>
+      <%= f.file_field(:icon_higher) -%>
+    </li>
+  </ul>
+
+  <%= f.check_box :reencode_existing_icons -%>
+  <%= f.label 'reencode_existing_icons', 'Re-encode existing icons?' -%>
+
+  <h2>Chain</h2>
+  <p>
+    <%= f.label 'chain_number', 'Chain number:' -%>
+    <%= f.number_field :chain_number -%>
+  </p>
+
+  <h2>Cryptokeys</h2>
+  <p>Oldest first.</p>
+  <ul>
+    <% @subreddit.cryptokeys.each do |cryptokey| %>
+      <li><%= cryptokey.secret_key %></li>
+    <% end %>
+    <li>
+      <%= f.check_box :new_cryptokey -%>
+      <%= f.label 'new_cryptokey', 'Generate new cryptokey?' -%>
+    </li>
+  </ul>
+
+  <p>
+    <%= f.submit -%>
+  </p>
+<% end -%>

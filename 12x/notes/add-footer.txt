@@ -1,0 +1,1 @@
+$('.footer').append('<div class="col"><ul class="flat-vert hover"><li class="flat-vert title">megamegamonitor</li><li><a href="#" class="choice">link</a></ul></div>');

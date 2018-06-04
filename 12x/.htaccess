@@ -1,0 +1,15 @@
+<Files ~ "\.(rb|log|lock|sh)$">
+  RedirectMatch 404 ".*"
+</Files>
+<Files "Gemfile">
+  RedirectMatch 404 ".*"
+</Files>
+
+RedirectMatch 404 ^/megamegamonitor/megamegamonitor/
+RedirectMatch 404 ^(/megamegamonitor)?/src/
+RedirectMatch 404 ^(/megamegamonitor)?/lib/
+RedirectMatch 404 ^(/megamegamonitor)?/models/
+RedirectMatch 404 ^(/megamegamonitor)?/node_modules/
+RedirectMatch 404 ^(/megamegamonitor)?/notes/
+RedirectMatch 404 ^(/megamegamonitor)?/output/
+RedirectMatch 404 ^(/megamegamonitor)?/output2/

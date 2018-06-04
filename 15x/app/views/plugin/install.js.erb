@@ -1,0 +1,47 @@
+// ==UserScript==
+// @name         MegaMegaMonitor
+// @namespace    https://www.megamegamonitor.com/
+// @version      <%= @current_version %>
+// @description  Spot your MegaFriends around the rest of Reddit.
+// @author       Dan Q (/u/avapoet)
+<%- # // @downloadURL  https://www.megamegamonitor.com/bin/MegaMegaMonitor.next.user.js?1437492280 %>
+// @downloadUrl  <%= url_for(controller: 'plugin', action: 'install', only_path: false) %>
+// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5-min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/evpkdf-min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core-min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes-min.js
+// @require      https://cdn.jsdelivr.net/coffeescript/1.7.1/coffee-script.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/showdown/1.3.0/showdown.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.10.0/codemirror.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.10.0/mode/coffeescript/coffeescript.min.js
+// @match        *://reddit.com/*
+// @match        *://*.reddit.com/*
+// @match        *://*.megamegamonitor.com/*
+// @grant        none
+// ==/UserScript==
+
+var VERSION = '<%= @current_version -%>';
+var AUTH_URL = '<%= url_for(controller: 'sessions', action: 'new', only_path: false) -%>';
+var DATA_URL = '<%= url_for(controller: 'data', action: 'get', only_path: false) -%>';
+var CHANGES_URL = '<%= url_for(controller: 'data', action: 'changes', format: 'html', only_path: false) -%>';
+var PLUGIN_VERSION_URL = '<%= url_for(controller: 'plugin', action: 'latest_version', only_path: false) -%>';
+var PLUGIN_INSTALL_URL = '<%= url_for(controller: 'plugin', action: 'install', only_path: false) -%>';
+var MMM_OPTIONS_URL = '/r/MegaMegaMonitor/wiki/options';
+var MMM_MAP_URL = '/r/MegaMegaMonitor/wiki/map';
+var MMM_TAILS_URL = '/r/MegaMegaMonitor/wiki/tails';
+var MMM_CHANGES_URL = '/r/MegaMegaMonitor/wiki/changes';
+var MMM_SUBREDDIT_URL = '/r/MegaMegaMonitor';
+var MMM_CSS = '<%= j(@css) -%>';
+var MMM_OPTIONS_HTML = '<%= j(@options_html) -%>';
+var MMM_START_HTML = '<%= j(@start_html) -%>';
+<% @additional_coffee_strings.each do |k,v| %>
+var <%= k %> = '<%= j(raw(v)) %>';
+<% end -%>
+var REDDIT_APP_CLIENT_ID = 'REDDIT APP CLIENT ID';
+var MAX_DATA_AGE = 21600000; // 21600000 = milliseconds in 6 hours
+var DEBUG_MODE = <%= @debug_mode ? 'true' : 'false' -%>;
+
+<%= raw Uglifier.compile(@javascript, @uglifier_options) -%>

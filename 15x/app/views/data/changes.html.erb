@@ -1,0 +1,28 @@
+<p>
+  New users recently added to selected private subreddits:
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Subreddit</th>
+      <th>Date</th>
+      <th>User</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @changes.each do |change| %>
+      <tr data-sub-id="<%= change[1] %>">
+        <td>
+          <a href="/r/<%= change[2] %>" data-sub="<%= change[2] %>" title="<%= change[2] %>" class="mmm-icon mmm-icon-<%= change[1] %>"></a>
+          <a href="/r/<%= change[2] %>"><%= change[2] %></a>
+        </td>
+        <td>
+          <time datetime="<%= change[3] %>"><%= change[3].to_s(:short) %></time>
+        </td>
+        <td>
+          <a href="/u/<%= change[0] %>"><%= change[0] %></a>
+        </td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>

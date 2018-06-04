@@ -1,0 +1,211 @@
+// Top "MMM" text
+
+.mmm-hint
+  position: absolute
+  cursor: inherit
+  height: 24px
+
+  a
+    position: absolute
+    white-space: nowrap
+    overflow: hidden
+    margin-left: -64px
+    margin-top: -4px
+    display: inline-block
+    height: 13px
+    background-size: contain
+    padding: 5px 5px 3px
+    background: #EFF7FF
+    color: #369
+    border-radius: 7px 7px 0 0
+
+// Top "MMM" bubble
+
+#mmm-status
+  p
+    padding-bottom: 0.5em
+
+// Icons
+
+.mmm-author-icons
+  display: inline
+
+.mmm-icon
+  display: inline-block
+  background-size: contain
+  width: 32px
+  height: 24px
+
+body.mmm-icons-large .mmm-icon
+  width: 48px
+  height: 36px
+
+body.mmm-icons-small .mmm-icon, .mmm-icon.mmm-icon-crypto
+  width: 21px
+  height: 16px
+
+body.mmm-icons-smaller .mmm-icon
+  width: 16px
+  height: 12px
+
+// Crypto
+
+.mmm-crypto-plaintext
+  background: #ccc
+  color: #555
+
+  &:hover
+    background: #999
+    color: #000
+
+  p
+    display: inline-block
+    vertical-align: top
+
+  .mmm-icon-crypto
+    margin-top: 3px
+
+  .flipped
+    display: none
+
+  &.has-publictext.show-publictext
+    background: transparent
+
+    .flopped
+      display: none
+
+    .flipped
+      display: initial
+
+// Button-like things in RES style
+.mmm-textarea-options .mmm-encrypt,
+.mmm-textarea-options-crypto a
+  padding: 0px
+  display: inline-block
+  position: relative
+  border: 1px solid #ccc
+  float: none
+  white-space: nowrap
+  background-color: #fff
+  background-repeat: no-repeat
+  background-position: 50% 50%
+
+// User-entered textarea features (e.g. crypto links)
+
+.mmm-textarea-options
+  text-align: right
+
+  .mmm-encrypt
+    height: 20px
+    width: 32px
+    margin-left: 4px
+    overflow: hidden
+    text-indent: 50px
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAPCAYAAADQ4S5JAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuNvyMY98AAADpSURBVChThZGhEoQwDET5TCQSiUQikUgkEolEIiuRSCQSicvd25l0OgzHiZ026W6STTMzi1iWxbqus7quBe7kUk68jONoYN93O89T4E6u7/svJRGEEFQNEhXbthXmebbjOCQCUUAFAIlz2zbBc9M06YwC5h2GwcqyVDIFOd6qqtKbkkVRqCUncYr7W7auqzbSNM0r4MDV/BjF3HVdEcT4YCGY921pfkzxwBqdTEzegQhuhhlIrDTt4DFiRkEAV4J7B86nDhKwtrSi46kDXK3NO7jxXx3gyjTBvw58nkxTiT3nef4KOCEE+wBUAiVnXP8ThwAAAABJRU5ErkJggg==)
+
+// Crypto controls
+
+.mmm-textarea-options-crypto
+  font-size: 80%
+  color: #888
+
+  a
+    line-height: 18px
+    padding: 0 3px
+
+// Options
+
+#mmm-options
+  font-size: 120%
+  line-height: 150%
+
+  strong
+    font-weight: bold
+
+  em
+    font-style: italic
+
+  textarea, .CodeMirror
+    border: 1px solid darkgray
+
+  // Options: Lists
+  #mmm-list-section
+    display: flex
+
+    #mmm-list-section-operations
+      flex: 3 1 70%
+
+      textarea
+        width: 95%
+        resize: vertical
+        min-height: 6em
+        height: 15em
+        font-family: monospace
+
+      .CodeMirror
+        width: 95.5%
+        font-size: 110%
+
+    #mmm-list-section-options
+      flex: 1 1 30%
+
+      #mmm-list-mode
+        color: white
+        background: black
+        display: inline-block
+        text-align: center
+        width: 4em
+
+  #mmm-options-editor
+    display: flex
+
+    #mmm-options-sections
+      flex: 0 0 auto
+      width: 14em
+      font-weight: bold
+      margin-right: 1em
+
+      li
+        cursor: pointer
+        line-height: 36px
+        border-bottom: 1px solid #eee
+        padding-left: 1em
+        background: #ddd
+
+        &.current
+          background: #821C00
+          color: white
+
+        .pointer
+          float: right
+          width: 0
+          height: 0
+          border-top: 18px solid white
+          border-bottom: 18px solid white
+          border-left: 18px solid transparent
+
+    .mmm-options-section
+      display: none
+      flex: 1 1 auto
+
+      &.current
+        display: block
+
+      p, li
+        margin-bottom: 0.5em
+
+      ol li
+        list-style-type: decimal
+        margin-left: 3em
+
+      ul li
+        list-style-type: circle
+        margin-left: 3em
+
+  #icon-suppression
+    -webkit-columns: 2
+    -moz-columns: 2
+    columns: 2
+
+    li
+      list-style-type: none !important

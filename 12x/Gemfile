@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+gem 'redd'
+gem 'activerecord', '~> 4.2.0'
+gem 'mysql2',       '~> 0.3.17'
+
+gem 'uglifier' # JS compressor
+gem 'cssminify' # CSS compressor
+gem 'htmlcompressor' # HTML compressor

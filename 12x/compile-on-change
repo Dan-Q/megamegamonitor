@@ -1,0 +1,6 @@
+#!/bin/bash
+while true; do
+  inotifywait src/mmm.js.coffee
+  sleep 0.1
+  ./compile.rb
+done

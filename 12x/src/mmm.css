@@ -1,0 +1,108 @@
+.mmm-id {
+  cursor: help;
+}
+.mmm-tip, .mmm-tip-id {
+  font-size: 10px !important;
+  color: #000 !important;
+  background: none repeat scroll 0% 0% #FFF !important;
+  margin-top: 32px;
+  z-index: 999999;
+  border: 1px solid #000;
+  position: absolute;
+  padding: 4px;
+}
+.mmm-tip a, .mmm-tip-id a {
+  color: #00f !important;
+  text-decoration: underline !important;
+}
+.mmm-tip-id { 
+  margin-top: 4px;
+}
+.mmm-tip-id p {
+  margin: 4px 0 !important;
+}
+.mmm-tip-id * {
+  font-size: 12px !important;
+  line-height: 14px !important;
+}
+.mmm-tip-id strong {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.mmm-icon {
+  display: inline-block;
+  width: 32px;
+  height: 24px;
+  background: url(https://d1wjam29zgrnhb.cloudfront.net/icons122c.png) no-repeat 0 0;
+  margin: 0 1px;
+}
+.mmm-icon.mmm-icon-tiny {
+  width: 16px;
+  height: 12px;
+  background-size: 48px;
+}
+.mmm-icon.mmm-icon-64 {
+  background-position: 0 -{{64 * 24}}px;
+}
+.mmm-icon.mmm-icon-68 {
+  background-position: 0 -{{68 * 24}}px;
+}
+.mmm-icon.mmm-icon-tiny.mmm-icon-64 {
+  background-position: 0 -{{64 * 24 / 2}}px;
+}
+.mmm-icon.mmm-icon-tiny.mmm-icon-68 {
+  background-position: 0 -{{68 * 24 / 2}}px;
+}
+.mmm-crypto-plaintext {
+  background: #ccc;
+  color: #555;
+}
+div.mmm-crypto-plaintext {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+div.mmm-crypto-plaintext > p {
+  display: inline-block;
+  vertical-align: top;
+}
+.mmm-crypto-plaintext:hover {
+  background: #999;
+  color: #000;
+}
+.mmm-crypto-plaintext .mmm-icon-crypto {
+  margin-top: 3px;
+}
+ul#mmm-options-hidden-subs,
+ul#mmm-options-hidden-subs li {
+  list-style: none;
+}
+.mmm-venn-icon {
+  display: inline-block;
+  width: 29px;
+  height: 16px;
+  background: url(https://d1wjam29zgrnhb.cloudfront.net/venn2.png) no-repeat 0 0;
+}
+.mmm-venn-icon.mmm-venn-icon-1minus2 {
+}
+.mmm-venn-icon.mmm-venn-icon-2minus1 {
+  background-position: 0 -16px;
+}
+.mmm-venn-icon.mmm-venn-icon-intersection {
+  background-position: 0 -32px;
+}
+.mmm-venn-icon.mmm-venn-icon-1plus2 {
+  background-position: 0 -48px;
+}
+.mmm-debugMode-only {
+  display: none;
+}
+body.mmm-debugMode .mmm-debugMode-only {
+  display: block;
+}
+.mmm-pirate-only, .mmm-ninja-only {
+  display: none;
+}
+.mmm-i-am-a-pirate .mmm-pirate-only,
+.mmm-i-am-a-ninja .mmm-ninja-only{
+  display: block;
+}

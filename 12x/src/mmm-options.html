@@ -1,0 +1,344 @@
+<div class="container" id="mmm-options">
+  <h1>MegaMegaMonitor Options/Tools</h1>
+  <a href="#back-to-reddit" class="btn btn-lg btn-primary pull-right">Back to Reddit</a>
+  <p>
+    For MegaMegaMonitor help, see <a href="/r/MegaMegaMonitor">/r/MegaMegaMonitor</a>.
+  </p>
+
+  <hr />
+
+  <h2>Options</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">Suppress icons</div>
+        <div class="panel-body">
+          <p>
+            If you're part of a private subreddit that you don't care about, you can hide that
+            subreddit's icon so that it won't appear alongside the names of your fellow members.
+            Check the checkboxes for the subs you want to <em>hide</em> the icons for:
+          </p>
+          <ul id="mmm-options-hidden-subs"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">Icon size</div>
+        <div class="panel-body">
+          <p>
+            Some people prefer smaller icons alongside the names of their friends.
+          </p>
+          <select class="form-control" id="mmm-iconsize">
+            <option value="reg">Regular (default)</option>
+            <option value="tiny">Tiny</option>
+          </select>
+        </div>
+      </div>
+    </div>    
+
+    <div class="col-md-4 mmm-ninja-only">
+      <div class="panel panel-info">
+        <div class="panel-heading">Ninja stealth</div>
+        <div class="panel-body">
+          <p>
+            As a member of <a href="/r/NinjaLounge">/r/NinjaLounge</a>, you may opt
+            to take off your disguise and let the filthy pirates see your identity.
+            Changes here can take up to 24 hours to take effect.
+          </p>
+          <p class="mmm-ninja-pirate-status"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mmm-pirate-only">
+      <div class="panel panel-info">
+        <div class="panel-heading">Pirate magic</div>
+        <div class="panel-body">
+          <p>
+            As a member of <a href="/r/PirateLounge">/r/PirateLounge</a>, you may opt
+            to come out into the open and let the cowardly ninjas see your identity.
+            Changes here can take up to 24 hours to take effect.
+          </p>
+          <p class="mmm-ninja-pirate-status"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mmm-debugMode-only">
+    <hr />
+    <h2>Debugging</h2>
+    <p>
+      These tools only work for MegaMegaMonitor developers. Sure, you were clever enough to
+      find them, but I promise you that they don't <em>do</em> anything.
+    </p>
+    <input type="text" class="form-control" placeholder="Command?" />
+    <button id="mmm-debug" class="btn btn-default">Debug</button>
+    <div id="mmm-debug-status"></div>
+  </div>
+  
+  <hr />
+
+  <h2>Tools</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">Find user's post in sub</div>
+        <div class="panel-body">
+          <p>
+            Looking to gild someone in their "highest" MegaLounge? Or just trying to find a
+            comment somebody made, once? This tool will help (but it's super slow!).
+          </p>
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="mmm-tools-find-comment-username" class="col-sm-3 control-label">Username:</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="text" id="mmm-tools-find-comment-username" placeholder="e.g. avapoet" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mmm-tools-find-comment-subreddit" class="col-sm-3 control-label">Subreddit:</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="text" id="mmm-tools-find-comment-subreddit" placeholder="e.g. MegaMegaMonitor" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mmm-tools-find-comment-subreddit" class="col-sm-3 control-label">Find:</label>
+              <div class="col-sm-9">
+                <select class="form-control" id="mmm-tools-find-comment-type">
+                  <option value="">Any</option>
+                  <option value="submitted">Post</option>
+                  <option value="comments">Comment</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button id="mmm-tools-find-comment-submit" class="btn btn-lg btn-default">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">Graph my gilding patterns</div>
+        <div class="panel-body">
+          <p>
+            Generate graphs showing where, what, and who you gild (and optionally come share your results
+            in <a href="/r/MegaMegaMonitor/">/r/MegaMegaMonitor/</a>)! This works by going through
+            <a href="/u/me/gilded/given">your entire gilding history</a>, but for some super-gilders it
+            might only go back so-far (owing to Reddit limitations).
+          </p>
+          <p>
+            <button id="mmm-tools-gilding-graphs-submit" class="btn btn-lg btn-default">Generate</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-warning">
+        <div class="panel-heading">Secret messages</div>
+        <div class="panel-body">
+          <p>
+            It's possible to write secret messages in posts and comments that can only be seen by fellow
+            MegaMegaMonitor users, so long as they've been granted access to specific subreddits. So you could,
+            for example, post a comment in <a href="/r/trees">/r/trees</a> but with some content that can
+            only be read by <a href="/r/gildedtrees">/r/gildedtrees</a> members.
+          </p>
+          <div class="form-group">
+            <label for="mmm-tools-encrypt-sub">Subreddit:</label>
+            <select class="form-control" id="mmm-tools-encrypt-sub"></select>
+            <span class="help-block">
+              Readers must be part of which subreddit in order to decrypt your message?
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="mmm-tools-encrypt-public">Public message:</label>
+            <input class="form-control" type="text" id="mmm-tools-encrypt-public" />
+            <span class="help-block">
+              Optionally provide a message that's shown to people who either don't have MegaMegaMonitor or
+              else don't have access to the appropriate subreddit. This text - if you provide any - will be
+              a hyperlink to <a href="/r/MegaMegaMonitor/wiki/encrypted">/r/MegaMegaMonitor/wiki/encrypted</a>,
+              which explains that they need to install MegaMegaMonitor to see the secret message.
+              If in doubt, leave this blank.
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="mmm-tools-encrypt-secret">Secret message:</label>
+            <textarea class="form-control" type="text" id="mmm-tools-encrypt-secret" rows="4"></textarea>
+            <span class="help-block">
+              Your secret message. You can include Reddit-style markdown to add links, bold, italic, etc.
+              You can even add code that's specific to the sub you're posting in, such as spoiler tags or
+              ponymotes. Try to keep it short (fewer than about 150 words) or you might run into problems.
+              Note that /r/... subreddit names will *not* automatically get turned into hyperlinks.
+            </span>
+          </div>
+          <div class="form-group">
+            <button id="mmm-tools-encrypt-submit" class="btn btn-lg btn-default">Encrypt</button>
+          </div>
+          <div class="form-group">
+            <label for="mmm-tools-encrypt-output">Copy-paste this into your post/comment:</label>
+            <textarea class="form-control" type="text" id="mmm-tools-encrypt-output" rows="4"></textarea>
+            <span class="help-block">
+              Copy-paste the code above into your post or comment, and submit as normal. If the code is
+              too long for a Reddit post/comment, shorten your secret message and try again. If your
+              message gets rejected by Reddit's spam filter, make sure you put some non-encrypted
+              content into your message, too.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>List Maker</h3>
+  <p>
+    A tool to help you make and manipulate lists of users. Useful for moderators! See
+    <a href="/r/MegaMegaMonitor/wiki/lists">/r/MegaMegaMonitor/wiki/lists</a> for
+    examples of use and 'recipes' representing the entry criteria for a variety
+    of different private subreddits.
+  </p>
+  <div class="row">
+    <div class="col-md-4 mmm-list">
+      <div class="panel panel-danger">
+        <div class="panel-heading">List 1 (finding people)</div>
+        <div class="panel-body">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="mmm-tools-list-1-find" class="col-sm-3 control-label">Find:</label>
+              <div class="col-sm-9">
+                <select class="form-control mmm-tools-list-find" id="mmm-tools-list-1-find">
+                  <option value="everybody">Everybody</option>
+                  <option value="gildees">Gildees</option>
+                  <option value="3gildees">Triple-gildees</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mmm-tools-list-1-sub" class="col-sm-3 control-label">Sub:</label>
+              <div class="col-sm-9">
+                <input class="form-control mmm-tools-list-sub" type="text" id="mmm-tools-list-1-sub" placeholder="lounge" />
+                <span class="help-block">
+                  Specify multiple subs by separating with a plus sign (+). And go put the kettle on; it'll take a while.
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mmm-tools-list-1-limit" class="col-sm-3 control-label">Limit:</label>
+              <div class="col-sm-9">
+                <input class="form-control mmm-tools-list-limit" type="number" id="mmm-tools-list-1-limit" min="1" />
+                <span class="help-block">
+                  Optionally limit the number of results to be to make the list generate faster.
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button class="btn btn-default form-control mmm-tools-list-submit" id="mmm-tools-list-1-submit">Start</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mmm-tools-list-1-output" class="col-sm-3 control-label">List:</label>
+              <div class="col-sm-9">
+                <textarea class="form-control mmm-tools-list-output" id="mmm-tools-list-1-output" rows="8" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12">
+                <button class="btn btn-default form-control mmm-tools-list-clear">Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mmm-list">
+      <div class="panel panel-danger">
+        <div class="panel-heading">List 2 (filtering)</div>
+        <div class="panel-body">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <div class="col-sm-12 btn-group-vertical">
+                <button class="btn btn-default form-control" id="mmm-tools-list-copy-1-2">Copy FROM List 1</button>
+                <button class="btn btn-default form-control" id="mmm-tools-list-copy-2-1">Copy TO List 1</button>
+                <button class="btn btn-default form-control" id="mmm-tools-list-copy-3-2">Copy FROM List 3</button>
+                <button class="btn btn-default form-control" id="mmm-tools-list-copy-2-3">Copy TO List 3</button>
+                <button class="btn btn-default form-control mmm-tools-list-clear">Clear</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mmm-tools-list-2-output" class="col-sm-3 control-label">List:</label>
+              <div class="col-sm-9">
+                <textarea class="form-control mmm-tools-list-output" id="mmm-tools-list-2-output" rows="8" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-12">Filter to List 3:</label>
+              <div class="col-sm-12 btn-group-vertical">
+                <button class="btn btn-default form-control" id="mmm-tools-filter-1-minus-2">
+                  <span class="mmm-venn-icon mmm-venn-icon-1minus2" />
+                  List 1 minus List 2
+                </button>
+                <button class="btn btn-default form-control" id="mmm-tools-filter-2-minus-1">
+                  <span class="mmm-venn-icon mmm-venn-icon-2minus1" />
+                  List 2 minus List 1
+                </button>
+                <button class="btn btn-default form-control" id="mmm-tools-filter-intersection">
+                  <span class="mmm-venn-icon mmm-venn-icon-intersection" />
+                  Intersection of 1 and 2
+                </button>
+                <button class="btn btn-default form-control" id="mmm-tools-filter-1-plus-2">
+                  <span class="mmm-venn-icon mmm-venn-icon-1plus2" />
+                  List 1 plus List 2
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4 mmm-list">
+      <div class="panel panel-danger">
+        <div class="panel-heading">List 3 (operations)</div>
+        <div class="panel-body">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <button class="btn btn-default form-control mmm-tools-list-clear">Clear</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mmm-tools-list-3-output" class="col-sm-3 control-label">List:</label>
+              <div class="col-sm-9">
+                <textarea class="form-control mmm-tools-list-output" id="mmm-tools-list-3-output" rows="8" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-12">With List 3:</label>
+              <div class="col-sm-12 btn-group-vertical">
+                <button class="btn btn-default form-control" id="mmm-tools-invite">Invite to subreddit...</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mmm-tools-list-3-log" class="col-sm-3 control-label">Log:</label>
+              <div class="col-sm-9">
+                <textarea class="form-control mmm-tools-list-log" id="mmm-tools-list-3-log" rows="8" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

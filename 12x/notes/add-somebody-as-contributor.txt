@@ -1,0 +1,1 @@
+$.get('/api/me.json', function(mejson){ var modhash = mejson.data.modhash; $.post('/r/MegaMegaMonitor/api/friend', { api_type: 'json', type: 'contributor', name: 'MegaMegaMonitorBot', uh: modhash }, function(data){ console.log(data); alert(data); }); });

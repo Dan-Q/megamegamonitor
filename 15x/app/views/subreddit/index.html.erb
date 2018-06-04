@@ -1,0 +1,44 @@
+<h1>Subreddits</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th rowspan="2">ID</th>
+      <th rowspan="2">Subreddit</th>
+      <th rowspan="2">Override name</th>
+      <th rowspan="2">Name secret?</th>
+      <th rowspan="2">Account</th>
+      <th colspan="2">Monitor</th>
+      <th rowspan="2">Contributors</th>
+      <th rowspan="2">Chain number</th>
+      <th rowspan="2" colspan="6">Icons</th>
+    </tr>
+    <tr>
+      <th>Contributors</th>
+      <th>Gildings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subreddits.each do |subreddit| -%>
+      <tr>
+        <td><%= link_to subreddit.id, subreddit -%></td>
+        <td><%= link_to subreddit.display_name, subreddit -%></td>
+        <td><%= subreddit.override_display_name -%></td>
+        <td><%= '✔️' if subreddit.name_is_secret? -%></td>
+        <td><%= subreddit.account.username -%></td>
+        <td><%= '✔️' if subreddit.monitor_contributors? -%></td>
+        <td><%= '✔️' if subreddit.monitor_gildings? -%></td>
+        <td>
+          <% if subreddit.monitor_contributors? -%>
+            <%= subreddit.contributors.count -%>
+          <% end -%>
+        </td>
+        <td><%= subreddit.chain_number -%></td>
+        <td><%= image_tag subreddit.icon_default.url %></td>
+        <td><%= image_tag subreddit.encoded_icon_default -%></td>
+        <td><%= image_tag subreddit.icon_current.url %></td>
+        <td><%= image_tag subreddit.encoded_icon_current -%></td>
+        <td><%= image_tag subreddit.icon_higher.url %></td>
+        <td><%= image_tag subreddit.encoded_icon_higher -%></td>
+    <% end -%>
+  </tbody>
+</table>
